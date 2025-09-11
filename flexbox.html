@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Box</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    /* Header and navigation */
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #f39c12;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: #f39c12;
+      color: #2c3e50;
+    }
+
+    /* Sections */
+    section {
+      padding: 3rem 2rem;
+      min-height: 100vh;
+    }
+
+    #home {
+      background: #ecf0f1;
+    }
+
+    #courses {
+      background: #fff;
+    }
+
+    #contact {
+      background: #ecf0f1;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    p, ul li {
+      font-size: 1rem;
+      color: #444;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">Flex Box</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home">
+    <h1>Welcome to Flex Box</h1>
+    <p>This is the homepage of the CSE School of Computing portfolio website.</p>
+  </section>
+
+  <section id="courses">
+    <h1>Our Courses</h1>
+    <ul>
+      <li>Web Development</li>
+      <li>Data Structures & Algorithms</li>
+      <li>Database Management Systems</li>
+      <li>Operating Systems</li>
+      <li>Artificial Intelligence</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h1>Contact Us</h1>
+    <p>Email: 234g1a0578@srit.ac.in</p>
+    <p>Phone: +91 12345678901</p>
+    <p>Address: CSE School of Computing, India</p>
+  </section>
+</body>
+</html>
+
