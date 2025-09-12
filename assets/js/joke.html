@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Joke Generator</title>
+</head>
+<body>
+  <h2>Random Joke Generator</h2>
+
+  <div id="jokeBox">
+    <p id="setup">Click the button to get a joke!</p>
+    <p id="punchline"></p>
+  </div>
+
+  <button id="getJokeBtn">Get Joke</button>
+  <button id="nextJokeBtn" style="display:none;">Next Joke</button>
+
+  <script>
+    // Local jokes (offline)
+    var jokes = [
+      {setup: "Why don’t scientists trust atoms?", punchline: "Because they make up everything!"},
+      {setup: "Why was the math book sad?", punchline: "Because it had too many problems."},
+      {setup: "What do you call fake spaghetti?", punchline: "An impasta."},
+      {setup: "Why can't your nose be 12 inches long?", punchline: "Because then it would be a foot!"},
+      {setup: "What do you call cheese that isn't yours?", punchline: "Nacho cheese."}
+    ];
+
+    // Function to get a random joke
+    function getJoke() {
+      var index = Math.floor(Math.random() * jokes.length);
+      return jokes[index];
+    }
+
+    // Function to display joke
+    function displayJoke(joke) {
+      document.getElementById("setup").innerText = joke.setup;
+      document.getElementById("punchline").innerText = joke.punchline;
+    }
+
+    var getJokeBtn = document.getElementById("getJokeBtn");
+    var nextJokeBtn = document.getElementById("nextJokeBtn");
+
+    // First click
+    getJokeBtn.onclick = function() {
+      var joke = getJoke();
+      displayJoke(joke);
+      getJokeBtn.style.display = "none";
+      nextJokeBtn.style.display = "inline";
+    };
+
+    // Next joke
+    nextJokeBtn.onclick = function() {
+      var joke = getJoke();
+      displayJoke(joke);
+    };
+  </script>
+</body>
+</html>
+
+
