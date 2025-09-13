@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Color List</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h2>Dynamic Color List App</h2>
+  <input type="text" id="colorInput" placeholder="Enter color">
+  <button id="addBtn">Add</button>
+  <button id="removeBtn">Remove Last</button>
+  <ul id="colorList"></ul>
+  <script>
+    $(document).ready(function() {
+      $("#addBtn").click(function() {
+        let color = $("#colorInput").val().trim();
+        if (color) {
+          $("#colorList").append("<li>" + color + "</li>");
+          $("#colorInput").val("");
+        }
+      });
+
+      $("#removeBtn").click(function() {
+        $("#colorList li:last").remove();
+      });
+      $("#colorList").on("click", "li", function() {
+        let color = $(this).text();
+        if ($(this).css("background-color") === "rgba(0, 0, 0, 0)" || $(this).css("background-color") === "transparent") {
+          $(this).css({"background-color": color, "color": "white"});
+        } else {
+          $(this).css({"background-color": "transparent", "color": "black"});
+        }
+      });
+
+      $("#colorList").on("mouseenter", "li", function() {
+        $(this).css("font-weight", "bold");
+      }).on("mouseleave", "li", function() {
+        $(this).css("font-weight", "normal");
+      });
+    });
+  </script>
+
+</body>
+</html>
+

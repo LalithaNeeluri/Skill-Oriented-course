@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Weather (jQuery)</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body{font-family: Arial; margin:20px}
+    #weather{margin-top:12px;padding:12px;border:1px solid #ddd;border-radius:6px;max-width:420px}
+  </style>
+</head>
+<body>
+
+  <input id="cityInput" placeholder="Enter city (e.g. Bangalore)" />
+  <button id="fetchBtn">Fetch Weather</button>
+
+  <div id="weather"></div>
+
+  <script>
+    console.log("weather details of a city using an API (jQuery)");
+
+    const cityCoords = {
+      "bangalore": { lat: 12.97, lon: 77.59 },
+      "delhi": { lat: 28.61, lon: 77.20 },
+      "mumbai": { lat: 19.07, lon: 72.87 },
+      "london": { lat: 51.51, lon: -0.13 },
+      "new york": { lat: 40.71, lon: -74.01 }
+    };
+
+    $(document).ready(function() {
+      $('#fetchBtn').on('click', function() {
+        const city = $('#cityInput').val().trim().toLowerCase();
+        if (!city) {
+          $('#weather').html('Please enter a city name.');
+          return;
+        }
+
+        if (!cityCoords[city]) {
+          $('#weather').html('City not found in list');
+          return;
+        }
+
+        const coords = cityCoords[city];
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current_weather=true;`
+
+        // show a small loading message
+        $('#weather').html('Loading weather data...');
+
+        $.getJSON(url)
+          .done(function(data) {
+            if (data && data.current_weather) {
+              const t = data.current_weather.temperature;
+              const w = data.current_weather.windspeed;
+              $('#weather').html(`
+                <h3>Weather in ${city}</h3>
+                <p>Temperature: ${t} °C</p>
+                <p>Windspeed: ${w} km/h</p>
+              `);
+            } else {
+              $('#weather').html('Weather data not available');
+            }
+          })
+          .fail(function(jqxhr, textStatus, error) {
+            console.error("Request Failed:", textStatus, error);
+            $('#weather').html('Error fetching weather data');
+          });
+      });
+    });
+  </script>
+</body>
+</html>
+
+

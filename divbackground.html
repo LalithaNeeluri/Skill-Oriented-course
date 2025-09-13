@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Background</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: lightgray;
+    }
+
+    #colorBox {
+      font-size: 70px;   
+       
+      cursor: pointer;   
+    }
+  </style>
+</head>
+<body>
+  <div id="colorBox">Lalitha</div>
+
+  <script>
+    let box = document.getElementById("colorBox");
+
+    box.addEventListener("click", function () {
+      
+      let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      
+      document.body.style.backgroundColor = randomColor;
+    });
+  </script>
+</body>
+</html>

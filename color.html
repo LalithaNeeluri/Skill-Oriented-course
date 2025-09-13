@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Color List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #colorList li {
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #colorList li:hover {
+      font-weight: bold;
+    }
+
+    input {
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 5px 10px;
+      margin-left: 5px;
+      font-size: 14px;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="assets/js/color.js" defer></script>
+</head>
+<body>
+
+  <h2>Dynamic Color List</h2>
+
+  <input type="text" id="colorInput" placeholder="Enter a color name">
+  <button id="addColor">Add</button>
+  <button id="removeColor">Remove Last</button>
+
+  <ul id="colorList"></ul>
+
+</body>
+</html>
